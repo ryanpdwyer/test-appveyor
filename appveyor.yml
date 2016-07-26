@@ -9,5 +9,5 @@ build_script:
   - ps: Start-FileDownload "https://github.com/stan-dev/cmdstan/releases/download/v2.10.0/cmdstan-2.10.0.zip" C:\cmdstan.zip; echo "Finished downloading cmdstan"
   # See http://stackoverflow.com/a/27771099
   - ps: Expand-Archive C:\cmdstan.zip -dest C:\cmdstan
-  - cl.exe
-  - ps: ls C:\cmdstan
+  - SET PATH=C:\msys64\usr\bin;C:\MinGW\bin;%PATH%
+  - g++ --version
