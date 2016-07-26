@@ -11,5 +11,5 @@ build_script:
   - ps: Expand-Archive C:\cmdstan.zip -dest C:\cmdstan
   - SET PATH=C:\msys64\usr\bin;C:\MinGW\bin;%PATH%
   - g++ --version
-  - cd cmdstan
+  - cd C:\cmdstan
   - make build
