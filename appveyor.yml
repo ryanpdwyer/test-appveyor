@@ -6,4 +6,4 @@ os: Visual Studio 2015
 
 build_script:
 # If there's a newer build queued for the same PR, cancel this one
-  - g++ --version
+  - cl
