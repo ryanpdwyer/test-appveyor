@@ -8,13 +8,20 @@ build_script:
 # If there's a newer build queued for the same PR, cancel this one
   - ps: Start-FileDownload "https://github.com/stan-dev/cmdstan/releases/download/v2.10.0/cmdstan-2.10.0.zip" C:\cmdstan.zip; echo "Finished downloading cmdstan"
   # See http://stackoverflow.com/a/27771099
-  - ps: Expand-Archive C:\cmdstan.zip -dest C:\
+  - ps: Expand-Archive C:\cmdstan.zip -dest .
   - SET PATH=C:\msys64\usr\bin;C:\MinGW\bin;%PATH%
   - g++ --version
-  - cd C:\cmdstan-2.10.0
+  - cd cmdstan-2.10.0
   - dir
   - make build
 
+test_script:
+  - python runCmdStanTests.py src/test/interface
+  - python stan_2.10.0/runTests.py stan_2.10.0/src/test
+  - python stan_2.10.0/lib/stan_math_2.10.0/runTests.py stan_2.10.0/lib/stan_math_2.10.0/test/unit
+  - python stan_2.10.0/lib/stan_math_2.10.0/runTests.py stan_2.10.0/lib/stan_math_2.10.0/test/prob
+  - cd ..
+
 artifacts:
-  - path: C:\cmdstan-2.10.0
+  - path: cmdstan-2.10.0
     name: Compiled cmdstan
