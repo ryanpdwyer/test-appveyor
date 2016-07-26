@@ -17,10 +17,12 @@ build_script:
 
 test_script:
   - python runCmdStanTests.py src/test/interface
-  - python stan_2.10.0/runTests.py stan_2.10.0/src/test
-  - python stan_2.10.0/lib/stan_math_2.10.0/runTests.py stan_2.10.0/lib/stan_math_2.10.0/test/unit
-  - python stan_2.10.0/lib/stan_math_2.10.0/runTests.py stan_2.10.0/lib/stan_math_2.10.0/test/prob
-  - cd ..
+  - cd stan_2.10.0
+  - python runTests.py src/test
+  - cd lib/stan_math_2.10.0
+  - python runTests.py test/unit
+  - python runTests.py test/prob
+  - cd ../../../..
 
 artifacts:
   - path: cmdstan-2.10.0
