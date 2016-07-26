@@ -6,7 +6,7 @@ os: Visual Studio 2015
 
 build_script:
 # If there's a newer build queued for the same PR, cancel this one
-  ps: Start-FileDownload "https://github.com/stan-dev/cmdstan/releases/download/v2.10.0/cmdstan-2.10.0.zip" C:\cmdstan; echo "Finished downloading cmdstan"
-  ps: PowerShell (New-Object -COM Shell.Application).NameSpace('C:\cmdstan').CopyHere((New-Object -COM Shell.Application).NameSpace('C:\cmdstan.zip').Items(), 16);
+  - ps: Start-FileDownload "https://github.com/stan-dev/cmdstan/releases/download/v2.10.0/cmdstan-2.10.0.zip" C:\cmdstan; echo "Finished downloading cmdstan"
+  - ps: PowerShell (New-Object -COM Shell.Application).NameSpace('C:\cmdstan').CopyHere((New-Object -COM Shell.Application).NameSpace('C:\cmdstan.zip').Items(), 16);
   - cl.exe
-  ps: ls C:\cmdstan
+  - ps: ls C:\cmdstan
